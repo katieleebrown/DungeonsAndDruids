@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Dungeons & Druids</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/style.css">
+
+        <!-- Fonts & Icons -->
+	</head>
+
+	<body>
+		<main>
+            <section>
+                <h1>Dungeons & Druids</h1>
+                <p>Dungeons & Dragons resources for the Druid class.</p>
+            </section>
+
+            <section>
+                <h2>Can I Wild Shape Into This?</h2>
+                <p>Tell us your subclass and level, and we'll let you know if you can wild shape into your monster!</p>
+
+                <form>
+                    <section>
+                        <label for="characterName">Character Name: </label>
+                        <input type="text" id="characterName" name="characterName" value="Character Name">
+                    </section>
+                    <section>
+                        <label for="subclass">Choose Your Subclass:</label>
+                        <select name="subclass" id="subclass">
+                            <option value="land">Circle of the Land</option>
+                            <option value="moon">Circle of the Moon</option>
+                        </select>
+                    </section>
+                    <section>
+                        <label for="level">Choose Your Level:</label>
+                        <input type="number" id="level" value="1" min="1" max="20">
+                    </section>
+                    <section>
+                        <label for="monsterInput">Monster:</label>
+                        <input type="text" id="monsterInput" name="monsterInput" value="Dire Wolf">
+                    </section>
+                </form>
+                <button id="wildShapeButton" type="button">Does It Work?</button>
+            </section>
+        </main>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

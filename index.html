@@ -25,30 +25,42 @@
                 <p>Tell us your subclass and level, and we'll let you know if you can wild shape into your monster!</p>
 
                 <form>
-                    <section>
-                        <label for="characterName">Character Name: </label>
-                        <input type="text" id="characterName" name="characterName" value="Character Name">
-                    </section>
-                    <section>
-                        <label for="subclass">Choose Your Subclass:</label>
-                        <select name="subclass" id="subclass">
-                            <option value="land">Circle of the Land</option>
-                            <option value="moon">Circle of the Moon</option>
-                        </select>
-                    </section>
-                    <section>
-                        <label for="level">Choose Your Level:</label>
-                        <input type="number" id="level" value="1" min="1" max="20">
-                    </section>
-                    <section>
-                        <label for="monsterInput">Monster:</label>
-                        <input type="text" id="monsterInput" name="monsterInput" value="Dire Wolf">
-                    </section>
+                    <div class="formRow">
+                        <section class="formBox">
+                            <label for="characterName">Character Name: </label>
+                            <input type="text" id="characterName" name="characterName" value="Character Name">
+                        </section>
+                        <section class="formBox">
+                            <label for="subclass">Choose Your Subclass:</label>
+                            <select name="subclass" id="subclass">
+                                <option value="land">Circle of the Land</option>
+                                <option value="moon">Circle of the Moon</option>
+                                <option value="dreams">Circle of Dreams</option>
+                                <option value="shepherd">Circle of the Shepherd</option>
+                                <option value="spores">Circle of Spores</option>
+                                <option value="stars">Circle of Stars</option>
+                                <option value="wildfire">Circle of Wildfire</option>
+                            </select>
+                        </section>
+                    </div>
+                    <div class="formRow">
+                        <section class="formBox">
+                            <label for="level">Choose Your Level:</label>
+                            <input type="number" id="level" value="1" min="1" max="20">
+                        </section>
+                        <section class="formBox">
+                            <label for="monsterInput">Choose Your Creature:</label>
+                            <select name="monsterInput" id="monsterInput">
+
+                            </select>
+                        </section>
+                    </div>
                 </form>
-                <button id="wildShapeButton" type="button">Does It Work?</button>
+                <button id="wildShapeButton" type="button">Can I Wild Shape?</button>
             </section>
 
             <section id="answerData">
+                <p id="canWildShapeAnswer"></p>
             </section>
         </main>
 

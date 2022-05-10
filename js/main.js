@@ -28,6 +28,7 @@ async function checkWildShape() {
     let selectedMonster = await makeMonster()
     console.log(selectedMonster)
     let response = character.canWildShape(selectedMonster)
+    console.log(response)
 
     document.querySelector('#canWildShapeAnswer').innerText = response
 
@@ -52,6 +53,8 @@ function makeMonster() {
             monSpeeds = data.results[0].speed
 
             console.log(monName, monType, monCR, monSpeeds)
+            console.log(monSpeeds.hasOwnProperty('swim'))
+            console.log(monSpeeds.hasOwnProperty('fly'))
             return new Monster(monName, monType, monCR, monSpeeds)
             }
         )
@@ -70,15 +73,17 @@ class Druid {
 
     canWildShape(selectedMonster) {
         let challengeRating = selectedMonster.challengeRating
-        let monSpeeds = selectedMonster.monsterSpeed
+        let canSwim = selectedMonster.monsterSpeed.hasOwnProperty('swim')
+        let canFly = selectedMonster.monsterSpeed.hasOwnProperty('fly')
         let monName = selectedMonster.name
         this.canCR(challengeRating)
-        this.canSwimOrFly(monSpeeds)
+        this.canSwimOrFly(canSwim, canFly)
 
         if (this.wildShape == true) {
-            return `Yes, ${this.name} can wildshape into a ${selectedMonster.name}` 
+            return `Yes, ${this.name} can wildshape into a ${selectedMonster.name}.` 
         } else {
-            let reasonList = this.reason.join(',')
+            let reasonList = this.reason.join(' ')
+            console.log(reasonList)
             return `No, ${this.name} cannot wild shape into a ${monName}. ${reasonList}`
         }
     }
@@ -93,15 +98,18 @@ class Druid {
         } 
     }
 
-    canSwimOrFly(monsterSpeed) {
-        if((this.level > 1 && level < 4) && (monsterSpeed.hasOwnProperty('swim'))) {
+    canSwimOrFly(canSwim, canFly) {
+        if((this.level > 1 && level < 4) && (canSwim)) {
             this.wildShape = false
+            console.log(`Monster has swim speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a swim speed.')
-        } else if ((this.level < 1 && this.level > 4) && (monsterSpeed.hasOwnProperty('fly'))) {
+        } else if ((this.level > 1 && this.level < 4) && (canFly)) {
             this.wildShape = false
+            console.log(`Monster has fly speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a fly speed.')
-        } else if ((this.level >=4 && this.level < 8) && (monsterSpeed.hasOwnProperty('fly'))) {
+        } else if ((this.level >=4 && this.level < 8) && (canFly)) {
             this.wildShape = false
+            console.log(`Monster has fly speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a fly speed.')
         } else {
             return

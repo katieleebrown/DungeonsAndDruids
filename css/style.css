@@ -8,6 +8,10 @@ body {
     background-image: url(https://img.freepik.com/free-photo/fantasy-natural-environment-3d-rendering_456031-62.jpg?w=2000);
 }
 
+h1, h2, p {
+    text-align: center;
+}
+
 /* Opening Styles */
 main {
     width: 100%;
@@ -30,4 +34,11 @@ main {
 .formRow {
     display: flex;
     flex-direction: row;
+}
+
+/* Media Styles */
+@media screen and (max-width: 500px) {
+    .formRow {
+        flex-direction: column;
+    }
 }

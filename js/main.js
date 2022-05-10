@@ -26,12 +26,9 @@ async function checkWildShape() {
     }
 
     let selectedMonster = await makeMonster()
-    console.log(selectedMonster)
     let response = character.canWildShape(selectedMonster)
-    console.log(response)
 
     document.querySelector('#canWildShapeAnswer').innerText = response
-
 }
 
 function makeMonster() {
@@ -46,15 +43,11 @@ function makeMonster() {
     return fetch(url) 
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             monName = data.results[0].name
             monType = data.results[0].type
             monCR = Number(data.results[0].challenge_rating)
             monSpeeds = data.results[0].speed
 
-            console.log(monName, monType, monCR, monSpeeds)
-            console.log(monSpeeds.hasOwnProperty('swim'))
-            console.log(monSpeeds.hasOwnProperty('fly'))
             return new Monster(monName, monType, monCR, monSpeeds)
             }
         )
@@ -83,7 +76,6 @@ class Druid {
             return `Yes, ${this.name} can wildshape into a ${selectedMonster.name}.` 
         } else {
             let reasonList = this.reason.join(' ')
-            console.log(reasonList)
             return `No, ${this.name} cannot wild shape into a ${monName}. ${reasonList}`
         }
     }
@@ -101,15 +93,12 @@ class Druid {
     canSwimOrFly(canSwim, canFly) {
         if((this.level > 1 && level < 4) && (canSwim)) {
             this.wildShape = false
-            console.log(`Monster has swim speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a swim speed.')
         } else if ((this.level > 1 && this.level < 4) && (canFly)) {
             this.wildShape = false
-            console.log(`Monster has fly speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a fly speed.')
         } else if ((this.level >=4 && this.level < 8) && (canFly)) {
             this.wildShape = false
-            console.log(`Monster has fly speed`)
             this.reason.push('Your level is too low to wildshape into a beast with a fly speed.')
         } else {
             return
@@ -140,5 +129,4 @@ class Monster {
         this.challengeRating = challengeRating
         this.monsterSpeed = monsterSpeed
     }
-
 }

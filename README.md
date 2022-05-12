@@ -3,6 +3,8 @@ A small project built to house DnD 5e resources for the Druid class. Currently, 
 
 You can take a look at the live version of Dungeons and Druids here: https://dungeonsanddruids.netlify.app/
 
+![image of webpage, with nature background and green card with information](https://raw.githubusercontent.com/katieleebrown/DungeonsAndDruids/main/dungeonsanddruids.JPG)
+
 # How It's Made:
 Tech used: HTML, CSS and Javascript
 
